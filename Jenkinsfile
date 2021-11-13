@@ -11,6 +11,7 @@ pipeline {
                 echo 'Hello World'
                 sh 'node --version'
                 sh 'yarn --version'
+                sh 'yarn test'
             }
         }
     }
