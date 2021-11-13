@@ -6,11 +6,12 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('Test') {
             steps {
                 echo 'Hello World'
                 sh 'node --version'
                 sh 'yarn --version'
+                sh 'yarn install'
                 sh 'yarn test'
             }
         }
