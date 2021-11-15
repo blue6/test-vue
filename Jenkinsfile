@@ -1,22 +1,18 @@
 pipeline {
-    agent none
+    agent any
     stages {
-        stage('test-vue') {
-            agent {
-                dockerfile {
-                  args '-dp 8081:8080'
-                }
-            }
+        stage('Setup') {
             steps {
-                sh 'node --version'
+                sh 'docker rm -f test-vue selenium'
+                sh 'docker rmi test-vue'
+               
+                sh 'docker build --tag test-vue .'
+                sh 'docker run --rm --name test-vue -dp 8081:8080 test-vue'
             }
         }
-        stage('selenium') {
-            agent {
-                docker { image 'selenium' }
-            }
+        stage('E2E Test') {
             steps {
-                sh 'node --version'
+                sh 'docker run --rm --name selenium selenium'
             }
         }
     }
