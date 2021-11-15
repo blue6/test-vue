@@ -8,7 +8,7 @@ pipeline {
                
                 sh 'docker build --tag test-vue .'
                 sh 'docker run --rm --name test-vue -dp 8081:8080 test-vue'
-                sh 'sleep 20'
+                sh 'sleep 2'
             }
         }
         stage('E2E Test') {
