@@ -4,12 +4,11 @@ pipeline {
         stage('test-vue') {
             agent {
                 dockerfile {
-                  args '-p 8081:8080'
+                  args '-dp 8081:8080'
                 }
             }
             steps {
-                sh 'yarn test:unit'
-                sh 'yarn serve'
+                sh 'node --version'
             }
         }
         stage('selenium') {
