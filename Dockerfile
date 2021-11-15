@@ -12,6 +12,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn test
+# RUN yarn test
 
-CMD [ "yarn", "serve" ]
+# CMD [ "yarn", "serve" ]
+CMD [ "yarn", "--version" ]

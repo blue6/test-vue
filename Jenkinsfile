@@ -1,27 +1,23 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs 'node-v16.13.0'
-    }
-
+    agent none
     stages {
-        stage('Setup') {
-            steps {
-                echo 'Hello World'
-                sh 'node --version'
-                sh 'yarn --version'
-                sh 'yarn install'
+        stage('test-vue') {
+            agent {
+                dockerfile {
+                  args '-p 8081:8080'
+                }
             }
-        }
-        stage('Unit Test') {
             steps {
                 sh 'yarn test:unit'
+                sh 'yarn serve'
             }
         }
-        stage('E2E Test') {
+        stage('selenium') {
+            agent {
+                docker { image 'selenium' }
+            }
             steps {
-                sh 'yarn test:e2e --headless'
+                
             }
         }
     }
