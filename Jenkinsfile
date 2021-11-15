@@ -17,7 +17,7 @@ pipeline {
                 docker { image 'selenium' }
             }
             steps {
-                
+                sh 'node --version'
             }
         }
     }
