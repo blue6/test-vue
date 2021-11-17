@@ -5,10 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit tests/unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit"
+    "test": "jest --runInBand tests/selenium"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -22,8 +22,10 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
+    "chromedriver": "95.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "selenium-webdriver": "^4.0.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
@@ -43,7 +45,8 @@
       {
         "files": [
           "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+          "**/tests/unit/**/*.spec.{j,t}s?(x)",
+          "jest.setup.js"
         ],
         "env": {
           "jest": true

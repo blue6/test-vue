@@ -3,17 +3,14 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'docker rm -f test-vue selenium'
-                sh 'docker rmi test-vue'
+                sh 'docker-compose -f docker-compose.test.yml down --rmi all'
                
-                sh 'docker build --tag test-vue .'
-                sh 'docker run --rm --name test-vue -dp 8081:8080 test-vue'
-                sh 'sleep 0'
+                sh 'docker-compose -f docker-compose.test.yml up --build -d web'
             }
         }
         stage('E2E Test') {
             steps {
-                sh 'docker run --rm --name selenium --net=host selenium'
+                sh 'docker-compose -f docker-compose.test.yml up --build selenium'
             }
         }
     }
