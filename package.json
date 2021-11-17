@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit tests/unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "test": "jest --runInBand tests/selenium"
+    "test": "jest --runInBand tests/selenium",
+    "test:viz": "jest --runInBand tests/viz"
   },
   "dependencies": {
     "core-js": "^3.6.5",
