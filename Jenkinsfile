@@ -8,7 +8,7 @@ pipeline {
                 sh 'docker-compose -f docker-compose.test.yml up --build -d web'
             }
         }
-        stage('E2E Test') {
+        stage('E2E selenium Test') {
             steps {
                 sh 'docker-compose -f docker-compose.test.yml up --build selenium'
             }
